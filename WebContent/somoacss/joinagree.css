@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+#agree_page {
+  border-radius:20px;
+  background-color: white;
+  padding-top:1px;
+  padding-bottom:10px;
+  width:700px;
+  margin: 20px auto;
+}
+form {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left:50px;
+}
+#agree_page ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+#agree_page span {
+  margin-left: 220px;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Jua', sans-serif;
+  font-size: 40px;
+}
+#jointext{
+	padding:5px;
+}
+.agree_text {
+  width: 245px;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+#agree_page li:nth-child(n + 2) {
+  width: 375px;
+  height: 30px;
+  padding: 8px 7px 0 8px;
+  margin-left: 0px;
+  border-radius: 20px;
+  margin-top: 10px;
+  font-size: 17px;
+  border-bottom:2px solid rgba(0,0,0,0.3);
+}
+.total_link:link {
+  text-decoration: none;
+}
+.total_link:visited {
+  text-decoration: none;
+  color: black;
+}
+#agree_page ul + div {
+  width: 230px;
+  margin:30px auto;
+}
+.agree_button {
+  border-radius: 30px;
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+}

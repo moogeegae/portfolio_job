@@ -1,0 +1,176 @@
+@charset "UTF-8";
+
+
+
+
+
+
+
+/* 문의게시판 */
+#qna{
+	width:840px;
+	border:5px solid rgba(0,0,0,0.3);
+	background-color: white;
+}
+#titleandinsert{
+	display: flex;
+	justify-content: space-between;
+	margin-left:40px;
+}
+#qnatitle{
+	width:160px;
+	height:40px;
+	font-size:25px;
+	margin:20px 0 0 50px;
+	text-align:center;
+	padding-top:15px;
+	color:#6ea1f9
+}
+#titleandinsert a{
+	margin-top:37px;
+	margin-right:95px;
+}
+#titleandinsert a button{
+	background-color: #eee;
+	border: 0.5px solid;
+	padding:5px;
+}
+#qna table{
+	margin:40px auto 20px;
+	text-align:center;
+	border-top:1px solid;
+	border-bottom:1px solid;
+	width:80%;
+	border-collapse: collapse;
+	border-spacing: 10px 0;
+}
+#qna table a:link{
+	text-decoration: none;
+	color:black;
+}
+#qna table a:visited{
+	text-decoration: none;
+	color:black;
+}
+#qna tr:first-child{
+	font-size:17px;
+	font-weight: bold;
+	
+}
+#qna tr:not(first-child){
+	border-top:1px solid rgba(0,0,0,0.4);
+}
+#qna td{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+#pageList{
+	display:flex;
+	justify-content: center;
+	background-color: white;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+#pageList a:lisk{
+	text-decoration: none;
+	color:black;
+}
+#pageList a:visited{
+	text-decoration: none;
+	color:black;
+}
+/* ViewQnA */
+.commandlist a{
+	margin-left:20px;
+	margin-right:20px;
+}
+.commandlist a:link{
+	text-decoration: none;
+	color:black;
+}
+.commandlist a:visited{
+	text-decoration: none;
+	color:black;
+}
+.viewqna{
+	width:100px;
+}
+/* ReplyQna */
+#pageList input[type="button"]{
+	border:1px solid;
+	background-color: #eee;
+	padding:5px;
+}
+.replyinput{
+	width: 200px;
+}
+.replyqna td:first-child{
+	width:100px;
+}
+/* Qnainsert */
+.qnainsert td:first-child{
+	width:100px;
+	border-right:1px solid;
+}
+.qnainsert td:nth-child(2){
+	text-align: left;
+	padding-left:10px;
+}
+#inserttitle{
+	width:500px;
+}
+.qnapeople{
+	width:150px;
+}
+
+/* centerboard */
+#faqsub{
+	margin-left:120px;
+	font-size:17px;
+}
+.faqbo{
+	display:flex;
+	justify-content: center;
+}
+.faqbo div{
+	padding-top:5px;
+	padding-bottom:3px;
+	border-bottom:1px solid rgba(0,0,0,0.3);
+}
+#faqbofir{
+	display:flex;
+	justify-content: center;
+}
+#faqbofir div{
+	padding-top:5px;
+	padding-bottom:3px;
+	border-bottom:1px solid rgba(0,0,0,0.3);
+	border-top:1px solid rgba(0,0,0,0.3);
+	font-size:17px;
+	font-weight: bold;
+	background-color: #eee;
+}
+.faqboardA{
+	width:20px;
+}
+.faqboardA img{
+	width:20px;
+}
+.faqboardB{
+	width:120px;
+}
+.faqboardC{
+	width:550px;
+	overflow: hidden;
+ 	white-space: nowrap;
+  	text-overflow: ellipsis;
+}
+.faqcl{
+	width:680px;
+	margin:10px 0 10px 80px;
+	background-color: #eee;
+}
+#nofaq{
+	width:340px;
+	margin:10px auto;
+}

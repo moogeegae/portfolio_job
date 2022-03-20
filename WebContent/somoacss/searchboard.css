@@ -1,0 +1,108 @@
+@charset "EUC-KR";
+#searchpage article{
+	width:200px;
+	background-color: white;
+	border:1px solid rgba(0,0,0,0.4);
+	margin-right:30px;
+	position: fixed;
+	top:218px;	
+	text-align:center;
+	z-index:-9999;
+}
+#searchpage article > div{
+	padding-top:10px;
+	padding-bottom:10px;
+	margin-bottom:10px;
+	background-color: #5e6b9e;
+	color:white;
+}
+#searchpage ul{
+	list-style: none;
+	padding-left:0px;
+}
+#searchpage ul li {
+	margin-bottom:10px;
+}
+#searchpage a:link{
+	text-decoration: none;
+	color:black;
+}
+#searchpage a:visited{
+	text-decoration: none;
+	color:black;
+}
+/**/
+#printoutBookGenre{
+	height:26px;
+	background-color: white;
+	border:1px solid rgba(0,0,0,0.4);
+	border-radius: 3px;
+	text-align: center;
+	margin-top:15px;
+	font-size:20px;
+	font-family: 'Black Han Sans', sans-serif;
+	font-weight: bold;
+}
+.printout{
+	height:26px;
+	background-color: white;
+	border:1px solid rgba(0,0,0,0.4);
+	border-radius: 3px;
+	text-align: center;
+	margin-top:15px;
+	font-size:16px;
+	font-family: 'Black Han Sans', sans-serif;
+	font-weight: bold;
+}
+.boards{
+	background-color: white;
+	border-bottom:1px solid rgba(0,0,0,0.2);
+	padding-top:10px;
+	padding-bottom:10px;
+	margin-left:230px;
+	
+}
+#boarddownline{
+	margin-bottom:30px;
+	
+}
+#bookcover{
+	width:130px;
+	height:200px;
+	margin-left:30px;
+	margin-right:20px;
+}
+#bookcover img{
+	width:130px;
+	height:200px;
+	object-fit: fill;
+}
+#bookall{
+	width:650px;
+	height: 200px;
+}
+#bookall div{
+	margin-bottom:20px;
+	font-size: 20px;
+}
+#bookall div:nth-child(4){
+	overflow: hidden;
+  	white-space: nowrap;
+  	text-overflow: ellipsis;
+}
+#bookall a:link{
+	text-decoration: none;
+	color:black;
+	font-weight: bold;
+	font-size:25px;
+}
+#bookall a:visited{
+	text-decoration: none;
+	color:black;
+	font-weight: bold;
+	font-size:25px;
+}
+#bookall a:hover{
+	text-decoration: underline;
+	color:black;
+}

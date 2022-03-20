@@ -1,0 +1,121 @@
+/*menu css, section (menu,.
+2개가 존재
+1. menu
+-main menu
+-sub menuw
+2. searching
+-live server searching
+-real-time popular search terms*/
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.menu > nav {
+  width: 800px;
+  height: 70px;
+  background-color: #5e6b9e;
+  color: white;
+  font-size: 20px;
+  display: inline;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.menu > nav > ul {
+  padding-left: 0;
+  margin-left: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+.menu > nav > ul > li {
+  list-style: none;
+  z-index: 999999;
+}
+.menu > nav > ul >li:link{
+	text-decoration: none;
+	color:white;
+}
+.menu > nav > ul >li:visited{
+	text-decoration: none;
+	color:white;
+}
+.menu > nav > ul > li:last-child {
+  padding-right: 0;
+}
+.hide_go {
+  display:none;
+  padding-left:0;
+  list-style: none;
+  text-align:center;
+  position:absolute;
+  width:133px;
+  font-size:14px;
+}
+.hide_go li a:link{
+	text-decoration: none;
+	color:black;
+}
+.hide_go li a:visited{
+	text-decoration: none;
+	color:black;
+}
+.menusize > li{
+	width:600px;
+  	text-align:center;
+}
+.hide_go li:not(:first-child):not(:last-child){
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.hide_go li:not(:first-child):not(:nth-child(2)){
+	border-left: 1px solid rgba(0,0,0,0.4);
+	border-right: 1px solid rgba(0,0,0,0.4);
+	background-color: white;
+}
+.top_border {
+  height: 5px;
+  border:0px solid #5e6b9e;
+  background-color:#5e6b9e;
+}
+.bottom_border{
+	border-bottom:1px solid rgba(0,0,0,0.4);
+}
+.arrow_border{
+	background: url(../somoaimage/arrow.png) no-repeat;
+	background-color:#5e6b9e;
+	border-left:1px solid #5e6b9e;
+	border-right:1px solid #5e6b9e;
+	border-bottom:1px solid;
+	margin-left:55px;
+}
+.menu > article {
+  clear: both;
+  border: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#search {
+  width: 250px;
+  height: 42px;
+  border-radius: 10px;
+  border: 3px solid black;
+  font-size: 15px;
+  padding: 0 5px;
+}
+input[type="button"]{
+	background-color:white;
+}
+.menunovel a{
+	text-decoration: none;
+	color:white;
+}
+.menunovel a:link{
+	text-decoration: none;
+	color:white;
+}
+.menunovel a:visited{
+	text-decoration: none;
+	color:white;
+}

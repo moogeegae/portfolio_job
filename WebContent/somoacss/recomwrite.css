@@ -1,0 +1,46 @@
+@charset "EUC-KR";
+@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+
+.recommend article:nth-child(2){
+	display:block;
+}
+.recommend article:nth-child(2) div{
+	font-family: 'Single Day', cursive;
+	font-size:30px;
+	padding:10px;
+	border:3px double;
+	width:220px;
+	margin-left:20%;
+	margin-bottom:20px;
+}
+.recommend table{
+	width:70%;
+	margin:10px auto;
+	border-collapse: collapse;
+	background-color: white;
+}
+.recommend table td{
+	padding:5px;
+}
+.recommend table td:first-child{
+	font-size:15px;
+	border-right:1px solid;
+	width:100px;
+}
+.recommend table td:nth-child(2){
+	text-align: left;
+	padding-left:10px;
+}
+.recommend table td input{
+	width:200px;
+	height: 20px;
+}
+#commandCell{
+	width:300px;
+	margin:3px auto;
+}
+#commandCell input{
+	width:120px;
+	height: 30px;
+	font-size:18px;
+}

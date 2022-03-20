@@ -1,0 +1,108 @@
+@charset "EUC-KR";
+
+#printoutBookGenre{
+	
+}
+#printoutBookGenre article{
+	margin-bottom: 30px;
+	background-color: white;
+}
+#printoutBookGenre article:first-child{
+	border:2px solid rgba(0,0,0,0.3);
+}
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+#printoutBookGenre article:nth-child(2){
+	margin-bottom: 0px;
+	text-align: center;
+	font-size: 30px;
+	font-family: 'Black Han Sans', sans-serif;
+	font-weight: bold;
+	border: 1px solid rgba(0,0,0,0.4);
+	padding:10px 0px;
+}
+#printoutBookGenre article div{
+	text-align:center;
+	margin: 50px 0px 50px 55px;
+	font-size: 20px;
+	color: mediumturquoise;
+	font-weight: bold;
+}
+#printoutBookGenre article table{
+	width:800px;
+	height: 100px;
+	margin: 20px auto;
+}
+#printoutBookGenre article table tr td{
+	padding: 10px 30px;
+	font-size: 20px;
+}
+#printoutBookGenre a:link{
+	text-decoration: none;
+	color:black;
+}
+#printoutBookGenre a:visited{
+	text-decoration: none;
+	color:black;
+}
+#boardupline{
+	width: 100%;
+	height: 20px;
+	background-color: white;
+}
+#bookboard{
+	width:100%;
+	background-color: white;
+	border-radius: 0 0 10px 10px;
+}
+.bookall{
+	width:190px;
+	height:350px;
+	margin-right:25px;
+	margin-top:10px;
+	margin-bottom:20px;
+	text-align: center;
+}
+.bookall img{
+	width: 140px;
+	height: 230px;
+}
+.bookall a:link{
+	text-decoration: none;
+	color:black;
+}
+.bookall a:visited{
+	text-decoration: none;
+	color:black;
+}
+.bookall div:nth-child(2){
+	width:180px;
+	font-size:16px;
+	margin-top:10px;
+	font-weight: bold;
+	margin-left:5px;
+}
+.bookinfo{
+	font-size: 13px;
+	margin-top:10px;
+}
+/* 페이지 숫자들  */
+#pageList{
+	display:flex;
+	justify-content: center;
+	background-color: white;
+	padding-top:20px;
+	padding-bottom:20px;
+	margin-bottom:30px;
+}
+#pageList a:link{
+	text-decoration: none;
+	color:black;
+}
+#pageList a:visited{
+	text-decoration: none;
+	color:black;
+}
+#pageList a:hover{
+	text-decoration: underline;
+	font-weight: bold;
+}

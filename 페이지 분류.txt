@@ -1,0 +1,41 @@
+index페이지
+-index.html : 겉으로 드러나는 초기 페이지, 메인 화면 같은거
+-loginindex.jsp : 로그인했을때 드러나는거 위에꺼랑 합치는게 좋아보임. 나중에 귀찮아질듯
+
+로그인관련
+-login.jsp : 로그인 실행
+-loginsession.jsp : 로그인 화면
+-logout.jsp : 로그아웃
+
+회원가입
+-join_suc.jsp : 회원가입 성공 출력 페이지
+-join.html : 회원가입 입력
+-joinagree.html : 회원가입 동의 페이지
+-idcheck.jsp : 아이디 중복 확인 페이지
+
+마이페이지
+-mypage.jsp
+
+추천페이지
+-loginrecommend.jsp
+-MyRecomWrite.jsp
+-recommend.jsp
+-RecommendWrite.jsp
+-RecomView.jsp
+-RecomDetail.jsp
+
+고객센터
+-BoardQnA.jsp
+-loginservicecenter.jsp
+-QnaInsert.jsp
+-ReplyQna.jsp
+-servicecenter.jsp
+-ViewQnA.jsp
+
+도서DB관련
+-booknotice.jsp
+-bookboard.jsp
+
+DB관련
+-코드가 A로 시작이면 도서
+-코드가 AA로 시작하면 웹소설

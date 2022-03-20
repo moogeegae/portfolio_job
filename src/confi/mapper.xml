@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapValues">
+	<!-- 마이페이지 -->
+	
+	<select id="SelectValues" resultType="dto.Custom">
+		select * from custom_info
+	</select>
+	
+	<insert id="insertSearch" parameterType="map">
+		insert into search values (#{search_num,jdbcType=INTEGER},#{searching},now())
+	</insert>
+	
+	<select id="trend" resultType="dto.Search" parameterType="String">
+		select searching,count(searching) as se from search where <![CDATA[ search_date>=#{due} ]]> group by searching order by se desc limit 10
+	</select>
+	
+	<select id="selectmypay" resultType="dto.Pay" parameterType="String">
+		select * from pay where custom_ID=#{cusid} order by pay_day desc
+	</select>
+	
+	
+	
+	<!-- 추천 -->
+	<select id="SelectRecom" resultType="dto.Recommend">
+		select * from recommend order by date desc
+	</select>
+	
+	<select id="SelectReno" resultType="int">
+		select count(*) from recommend
+	</select>
+	
+	<select id="SelectRecomOne" resultType="dto.Recommend" parameterType="String">
+		select * from recommend where genre=#{genre} order by count desc
+	</select>
+
+	<select id="SelectRecomMy" resultType="dto.Recommend" parameterType="String">
+		select * from recommend where recommender=#{recommender}
+	</select>
+	
+	<select id="SelectRecomDetail" resultType="dto.Recommend" parameterType="int">
+		select * from recommend where reno=#{reno}
+	</select>
+	
+	<insert id="InsertRecom" parameterType="dto.Recommend">
+		insert into recommend values (#{reno,jdbcType=INTEGER},#{code},#{genre},#{cover},#{title},#{recommender},now(),#{count},#{up},#{contents})
+	</insert>
+	
+	<select id="SelectOpenNumRecom" resultType="int" parameterType="int">
+		select count from recommend where reno=#{reno}
+	</select>
+	
+	<update id="updateRecomCount" parameterType="Map">
+		update recommend set count=#{count} where reno=#{reno}
+	</update>
+	
+	<select id="SelectOneWhatPay" resultType="int" parameterType="String">
+		select novel_price from webnovel where piece_code=#{code}
+	</select>
+	
+	<insert id="insertLike" parameterType="map">
+		insert into likerecom values(#{like_num,jdbcType=INTEGER},#{upreno},#{cusid},1)
+	</insert>
+	
+	<select id="selectLike" resultType="Integer" parameterType="map">
+		select like_check from likerecom where likereno=#{upreno} and custom_id=#{cusid}
+	</select>
+	
+	<update id="upLike0" parameterType="map">
+		update likerecom set like_check=1 where likereno=#{upreno} and custom_id=#{cusid}
+	</update>
+	
+	<update id="upLike1" parameterType="map">
+		update likerecom set like_check=0 where likereno=#{upreno} and custom_id=#{cusid}
+	</update>
+	
+	<update id="updateLike" parameterType="int">
+		update recommend set up=(select sum(like_check) from likerecom where likereno=#{upreno}) where reno=#{upreno}
+	</update>
+	
+	<select id="SelectLikeRecom" resultType="dto.Recommend">
+		select * from recommend order by up desc
+	</select>
+	
+	<!-- 문의 -->
+	<select id="SelectMyQna" resultType="dto.Qna" parameterType="Map">
+		select * from qna where qna_re_ref in (select qna_re_ref from qna where qna_id=#{qna_id}) order by qna_re_ref desc,qna_re_seq asc limit #{start}, 10
+	</select>
+	
+	<select id="SelectQna" resultType="dto.Qna">
+		select * from qna
+	</select>
+	
+	<select id="SelectQnaCount" resultType="int">
+		select count(*) from qna
+	</select>
+	
+	<insert id="InsertQna" parameterType="dto.Qna">
+		insert into qna values(#{qna_num},#{qna_id},#{qna_pass},#{qna_title},#{qna_content},#{qna_file},#{qna_re_ref},#{qna_re_lev},#{qna_re_seq},#{qna_complete},now())
+	</insert>
+	
+	<update id="UpdateQnaReply">
+		update qna set qna_re_seq=#{qna_re_seq}+1 where qna_re_ref=#{qna_re_ref} and qna_re_seq>#{qna_re_seq}
+	</update>
+	
+	<update id="updateReply">
+		update qna set qna_complete=#{qna_complete} where qna_re_seq=0 and qna_re_ref=#{qna_re_ref}
+	</update>
+	
+	<select id="SelectFaqCount" resultType="int">
+		select count(*) from faq
+	</select>
+	
+	<select id="SelectFaq" resultType="dto.Faq" parameterType="Map">
+		select * from faq where faq_genre=#{genre} limit #{start}, 10
+	</select>
+
+	
+	<!-- 도서 열람 -->
+	<select id="SelectBook" resultType="dto.Book" parameterType="int">
+		select * from book limit #{start}, 10
+	</select>
+	
+	<select id="SelectGenreBook" resultType="dto.Book" parameterType="Map">
+		select * from book where book_genre=#{book_genre} limit #{start}, 10
+	</select>
+	
+	<select id="SelectCounBook" resultType="dto.Book" parameterType="Map">
+		select * from book where book_nation=#{book_nation} limit #{start}, 10
+	</select>
+	
+	<select id="SelectOneBook" resultType="dto.Book" parameterType="String">
+		select * from book where piece_code=#{code}
+	</select>
+	
+	<select id="SelectBookCount" resultType="int">
+		select count(*) from book
+	</select>
+	
+	<select id="SelectBookGenreCount" resultType="int" parameterType="String">
+		select count(*) from book where book_genre=#{book_genre}
+	</select>
+	
+	<select id="SelectBookNationCount" resultType="int" parameterType="String">
+		select count(*) from book where book_nation=#{book_genre}
+	</select>
+	
+	<select id="SelectIndexBest" resultType="dto.Book" parameterType="String">
+		select * from book where <![CDATA[ book_check_birth>=#{due} ]]> order by book_sale desc
+	</select>
+	
+	<select id="SelectIndexBestNew" resultType="dto.Book" parameterType="String">
+		select * from book where <![CDATA[ book_check_birth>=#{due} ]]> order by book_sale desc
+	</select>
+	
+	<update id="updatePaybook" parameterType="map">
+		update book set book_num=#{book_num}, book_sale=#{book_sale} where piece_code=#{code}
+	</update>
+	
+	<select id="forupdatePaynum" resultType="int" parameterType="String">
+		select book_num from book where piece_code=#{code}
+	</select>
+	
+	<select id="forupdatePaysale" resultType="int" parameterType="String">
+		select book_sale from book where piece_code=#{code}
+	</select>
+	
+	
+	
+	<!-- review -->
+	<insert id="InsertRe" parameterType="dto.Review">
+		insert into review values(#{review_number,jdbcType=INTEGER},#{custom_ID},#{piece_code},now(),#{review_content},#{review_star})
+	</insert>
+	
+	<select id="SelectReview" resultType="dto.Review" parameterType="String">
+		select * from review where piece_code=#{code}
+	</select>
+	
+	<select id="SearchBook" resultType="dto.Book" parameterType="String">
+		select * from book where book_name like CONCAT('%', #{searching}, '%')
+	</select>
+
+	<select id="SearchReviewnum" resultType="int" parameterType="String">
+		select count(*) from review where piece_code=#{code}
+	</select>
+
+	<select id="SearchStaravg" resultType="int" parameterType="String">
+		select avg(review_star) from review where piece_code=#{code}
+	</select>
+	
+	
+	
+	<!-- 웹소설 -->
+	<select id="SelectPayCount" resultType="int">
+		select count(*) from webnovel where novel_price=100
+	</select>
+	
+	<select id="SelectFreeCount" resultType="int">
+		select count(*) from webnovel where novel_price=0
+	</select>
+	
+	<select id="SelectpayNovel" resultType="dto.Novel" parameterType="int">
+		select * from (select * from webnovel where novel_price=100 order by novel_birth limit 10000 ) A where novel_price=100 group by novel_name order by novel_birth desc limit #{start}, 35
+	</select>
+	
+	<select id="SelectfreeNovel" resultType="dto.Novel" parameterType="int">
+		select * from (select * from webnovel where novel_price=0 order by novel_birth limit 10000 ) A where novel_price=0 order by novel_birth desc limit #{start}, 35
+	</select>
+	
+	<select id="SelectpaybestNovel" resultType="dto.Novel">
+		select piece_code, novel_name, novel_author, novel_genre, novel_cover, avg(novel_open_num) as avgnovel from webnovel where novel_price=100 group by novel_name order by avgnovel desc limit 10
+	</select>
+	
+	<select id="SelectfreebestNovel" resultType="dto.Novel">
+		select piece_code, novel_name, novel_author, novel_genre, novel_cover, avg(novel_open_num) as avgnovel from webnovel where novel_price=0 group by novel_name order by avgnovel desc limit 10
+	</select>
+	
+	<select id="SelectpayrecentbestNovel" resultType="dto.Novel" parameterType="String">
+		select piece_code, novel_name, novel_author, novel_genre, novel_cover from (select * from webnovel where novel_price=100 and novel_name in (select novel_name from (select * from webnovel order by novel_num asc) B group by novel_name having novel_birth>=#{due}) order by novel_birth desc limit 10000 ) A group by novel_name order by novel_open_num limit 10
+	</select>
+	
+	<select id="SelectfreerecentbestNovel" resultType="dto.Novel" parameterType="String">
+		select piece_code, novel_name, novel_author, novel_genre, novel_cover from (select * from webnovel where novel_price=0 and novel_name in (select novel_name from (select * from webnovel order by novel_num asc) B group by novel_name having novel_birth>=#{due}) order by novel_birth desc limit 10000 ) A group by novel_name order by novel_open_num limit 10
+	</select>
+	
+	<select id="SelectpaygenreNovel" resultType="dto.Novel" parameterType="String">
+		select piece_code, novel_name, novel_author, novel_genre, novel_cover from (select * from webnovel where novel_price=100 and novel_genre=#{genre} order by novel_birth desc limit 10000 ) A group by novel_name order by novel_open_num limit 7
+	</select>
+	
+	<select id="SelectfreegenreNovel" resultType="dto.Novel" parameterType="String">
+		select piece_code, novel_name, novel_author, novel_genre, novel_cover from (select * from webnovel where novel_price=0 and novel_genre=#{genre} order by novel_birth desc limit 10000 ) A group by novel_name order by novel_open_num limit 7
+	</select>
+	
+	<select id="SelectpaygenreetcNovel" resultType="dto.Novel">
+		select piece_code, novel_name, novel_author, novel_genre, novel_cover from (select * from webnovel where novel_price=100 and novel_genre not in ('무협','판타지','퓨전','게임','스포츠','로맨스','현대판타지','대체역사','드라마') order by novel_birth desc limit 10000 ) A group by novel_name order by novel_open_num limit 7
+	</select>
+	
+	<select id="SelectfreegenreetcNovel" resultType="dto.Novel">
+		select piece_code, novel_name, novel_author, novel_genre, novel_cover from (select * from webnovel where novel_price=0 and novel_genre not in ('무협','판타지','퓨전','게임','스포츠','로맨스','현대판타지','대체역사','드라마') order by novel_birth desc limit 10000 ) A group by novel_name order by novel_open_num limit 7
+	</select>
+	
+	<select id="SelectOneNovel" resultType="dto.Novel" parameterType="String">
+		select * from webnovel where novel_set=(select novel_set from webnovel where piece_code=#{code}) order by novel_num desc
+	</select>
+	
+	<select id="SelectOpenNumNovel" resultType="int" parameterType="Map">
+		select novel_open_num from webnovel where novel_set=#{novel_set} and novel_num=#{novel_num}
+	</select>
+	
+	<update id="updateNovelCount" parameterType="Map">
+		update webnovel set novel_open_num=#{novel_open_num} where novel_set=#{novel_set} and novel_num=#{novel_num}
+	</update>
+	
+	<select id="SearchNovel" resultType="dto.Novel" parameterType="String">
+		select * from webnovel where novel_name like CONCAT('%', #{searching}, '%') group by novel_name
+	</select>
+	
+	<!-- 결제파트 -->
+	
+	<insert id="insertBasket" parameterType="dto.Basket">
+		insert into basket values(#{basket_num,jdbcType=INTEGER},#{custom_id},#{piece_code},#{item_num})
+	</insert>
+	
+	<select id="SelectBasket" resultType="dto.Basket" parameterType="String">
+		select custom_ID, piece_code, sum(item_num) as su from basket where custom_ID=#{cusid} group by piece_code
+	</select>
+	<select id="SelectBasketNum" resultType="int" parameterType="map">
+		select sum(item_num) as su from basket where custom_ID=#{cusid} and piece_code=#{code}
+	</select>
+	
+	<select id="countpay" resultType="int">
+		select count(*) from pay
+	</select>
+	
+	<insert id="insertPay" parameterType="dto.Pay">
+		insert into pay values(#{pay_code},#{custom_id},#{pay_type},#{pay_price},#{pay_day},#{event_code},#{open_code},#{buy_code})
+	</insert>
+	
+	<delete id="deleteBasket" parameterType="map">
+		delete from basket where custom_ID=#{cusid} and piece_code=#{code}
+	</delete>
+	
+	
+</mapper>

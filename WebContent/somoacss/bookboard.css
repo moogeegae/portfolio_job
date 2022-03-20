@@ -1,0 +1,113 @@
+@charset "EUC-KR";
+/* board 상단 하단 경계 만들기 */
+#boardupline{
+	border-bottom:2px solid black;
+	margin-top:20px;
+}
+#boarddownline{
+	height:10px;
+	border-bottom:2px solid black;
+	margin-bottom:20px;	
+	margin-top:20px;
+}
+
+/* 어떤 목록을 보여주는지 안내문 */
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+#printoutBookGenre{
+	height:26px;
+	background-color: white;
+	border:1px solid rgba(0,0,0,0.4);
+	border-radius: 3px;
+	text-align: center;
+	margin-top:15px;
+	font-size:20px;
+	font-family: 'Black Han Sans', sans-serif;
+	font-weight: bold;
+}
+
+/* 목록들 보여주는거 */
+#bookboard{
+	background-color: white;
+	border-bottom:1px solid rgba(0,0,0,0.2);
+	padding-top:10px;
+	padding-bottom:10px;
+}
+#bookcover{
+	width:130px;
+	height:200px;
+	margin-right:20px;
+}
+#bookcover img{
+	width:130px;
+	height:200px;
+	object-fit: fill;
+}
+#bookall{
+	width:700px;
+	height: 200px;
+}
+#bookall div:nth-child(4){
+	overflow: hidden;
+  	white-space: nowrap;
+  	text-overflow: ellipsis;
+}
+#bookall a:link{
+	text-decoration: none;
+	color:black;
+	font-weight: bold;
+	font-size:18px;
+}
+#bookall a:visited{
+	text-decoration: none;
+	color:black;
+	font-weight: bold;
+	font-size:18px;
+}
+#bookall a:hover{
+	text-decoration: underline;
+	color:black;
+}
+#bookboard article:last-child{
+	width:205px;
+	height:200px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content: center;
+	
+}
+#bookboard button{
+	width:100px;
+	height:40px;
+	color:white;
+	font-weight: bold;
+	border:0;
+}
+#bacolor{
+	background-color: #5E6B9F;
+	margin-bottom:10px;
+}
+#pacolor{
+	background-color: #7B8ED1;
+}
+
+/* 페이지 숫자들  */
+#pageList{
+	display:flex;
+	justify-content: center;
+	background-color: white;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+#pageList a:link{
+	text-decoration: none;
+	color:black;
+}
+#pageList a:visited{
+	text-decoration: none;
+	color:black;
+}
+#pageList a:hover{
+	text-decoration: underline;
+	font-weight: bold;
+}

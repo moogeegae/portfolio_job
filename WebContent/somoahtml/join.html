@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>소모아-회원가입</title>
+    </head>
+    <link rel="stylesheet" href="../somoacss/join.css">
+    <body class="body_join">
+        <div class="join_top_logo" onclick="gohome()">SoMoa</div>
+        <table class="join_table">
+            <form name="myform" id="formjoin">
+                <tr>
+                    <td class="join_box_explain">
+                        아이디
+                    </td>
+                    <td>
+                        <div id='idcheckresult'></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text" placeholder="아이디 입력(8~15자 | 영문과 숫자만 사용가능합니다.)" name="join_id" class="join_full join_input_size" title="ID" id="idcheck"></td>
+                </tr>
+                <tr>
+                    <td class="join_box_explain">
+                        비밀번호
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="password" placeholder="비밀번호(10~20자 | 영문, 숫자, 특수문자가 모두 들어가있어야합니다.)" name="join_password" title="password" class="join_full join_input_size"></td>
+                </tr>
+                <tr>
+                    <td class="join_box_explain">
+                        비밀번호 재확인
+                    </td>
+                    <td>
+                        <div id="pwdcheck"></div>
+                    </td>
+                </tr>
+                <tr> 
+                    <td colspan="2"><input type="password" placeholder="비밀번호 재확인" name="join_password_check" title="password check" class="join_full join_input_size" onkeyup="pwd_check()"></td>
+                </tr>
+                <tr>
+                    <td class="join_box_explain">
+                        이름
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text" placeholder="이름" name="join_name" title="name" class="join_full join_input_size"></td>
+                </tr>
+                <tr>
+                    <td class="join_box_explain">
+                        생년월일
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text" placeholder="연도" name="join_year" title="year" class="join_year join_input_size">
+                        <select name="join_month" title="month" class="join_month join_input_size" id="join_month">
+                            <option value="월">월</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <input type="text" placeholder="일" name="join_day" title="day" class="join_day join_input_size">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="join_box_explain" >
+                        성별
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <select class="join_full join_input_size" id="join_sex" name="join_sex">
+                            <option value="성별">성별</option>
+                            <option value="남자">남자</option>
+                            <option value="여자">여자</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="join_box_explain">
+                        닉네임
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text" placeholder="닉네임" name="nickname" title="nickname" class="join_full join_input_size"></td>
+                </tr>
+                <tr>
+                    <td class="join_box_explain">
+                        주소
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" placeholder="주소 입력" name="address" title="address" class="join_input_size" id="join_address_place">
+                        <input type="button" value="주소 찾기" id="join_address_button_size">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text" placeholder="상세 주소 입력" name="address_detail" title="detail address" class="join_full join_input_size"></td>
+                </tr>
+                <tr>
+                    <td class="join_box_explain">
+                        연락처
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="join_phone join_input_size">
+                        <input type="tel" name="phone1" placeholder="ex)010" title="phonenumber">
+                        <span>-</span>
+                        <input type="tel" name="phone2" placeholder="0000" title="phonenumber">
+                        <span>-</span>
+                        <input type="tel" name="phone3" placeholder="0000" title="phonenumber">
+                    </td>
+                </tr>
+                <tr> 
+                    <td class="join_box_explain">
+                        이메일
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="join_email join_input_size">
+                        <input type="text" name="join_email" placeholder="이메일 입력" title="email">@
+                        <select id="email_select" name="email_select">
+                            <option>선택</option>
+                            <option>naver.com</option>
+                            <option>hanmail.net</option>
+                            <option>yahoo.co.kr</option>
+                            <option>gmail.com</option>
+                            <option>nate.com</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="join_box_explain">
+                        관심분야(선택)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <table border="3" rules="groups" class="join_full join_interest" id="inter">
+                            <tr align="center">
+                                <td>
+                                    <input type="checkbox" name="interest" value="무협">무협
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="판타지">판타지
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="퓨전">퓨전
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="게임">게임
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="스포츠">스포츠
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="로맨스">로맨스
+                                </td>
+                            </tr>
+                            <tr align="center">
+                                <td>
+                                    <input type="checkbox" name="interest" value="라이트노벨">라이트노벨
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="현대판타지">현대판타지
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="대체역사">대체역사
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="교육">교육
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="사전">사전
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="전쟁">전쟁
+                                </td>
+                            </tr>
+                            <tr align="center">
+                                <td>
+                                    <input type="checkbox" name="interest" value="SF">SF
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="추리">추리
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="공포,미스테리">공포,미스테리
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="일반소설">일반소설
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="시,수필">시,수필
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="중,단편">중,단편
+                                </td>
+                            </tr>
+                            <tr align="center">
+                                <td>
+                                    <input type="checkbox" name="interest" value="아동,소설,동화">아동,소설,동화
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="드라마">드라마
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="연극,시나리오">연극,시나리오
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="interest" value="팬픽,패러디">팬픽,패러디
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="agree_explain">
+                    <td rowspan="2" valign="middle">이벤트 관련 정보 수신 동의(선택)</td>
+                    <td>
+                    	<span style="margin-right:4px;">&nbsp;&nbsp;SMS:</span>
+                        <input type="radio" name="smsok" value="동의" checked >
+                        <span>동의</span>
+                        <input type="radio" name="smsok" value="동의 안함">
+                        <span>동의 안함</span>
+                    </td>
+                </tr>
+                <tr class="agree_explain">
+                    <td>이메일:
+                        <input type="radio" name="emailok" value="동의" checked>
+                        <span>동의</span>
+                        <input type="radio" name="emailok" value="동의 안함">
+                        <span>동의 안함</span>
+                    </td>
+                </tr>
+                <tr class="agree_explain">
+                    <td>작품 데이터 수집 동의(선택)</td>    
+                    <td>
+                    	<span style="margin-right:48px;"> </span>
+                        <input type="radio" name="openok" value="동의" checked>
+                        <span>동의</span>
+                        <input type="radio" name="openok" value="동의 안함">
+                        <span>동의 안함</span>
+                    </td>
+                </tr>
+            </form>
+        </table>
+        <br>
+        <table align="center" class="join_button_all">
+            <tr>
+                <td>
+                    <input type="button" value="가입하기" class="join_button_di total_link join_button_di_link" onclick="go_somoa()">
+                    <a href="joinagree.html" class="total_link join_button_di_link">
+                        <input type="button" value="취소" class="join_button_di">
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </body>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        function go_somoa(){
+            var sig = false;
+            var sig_id=false;
+            var sig_pwd=false;
+            var sig_name=false;
+            var sig_year=false;
+            var sig_month=false;
+            var sig_day=false;
+            var sig_sex=false;
+            var sig_nick=false;
+            var sig_add=false;
+            var sig_phone=false;
+            var sig_email=false;
+            
+            var temp_id = document.getElementsByName('join_id')[0].value;
+            var temp_pwd = document.getElementsByName('join_password')[0].value;
+            var temp_name = document.getElementsByName('join_name')[0].value;
+            var temp_year = document.getElementsByName('join_year')[0].value;
+            var month_id= document.getElementById('join_month');
+            var temp_month=month_id.options[month_id.selectedIndex].value;
+            var temp_day = document.getElementsByName('join_day')[0].value;
+            var sex_id = document.getElementById('join_sex');
+            var temp_sex=sex_id.options[sex_id.selectedIndex].value;
+            var temp_nick = document.getElementsByName('nickname')[0].value;
+            var temp_adr = document.getElementsByName('address')[0].value;
+            var temp_adr_de = document.getElementsByName('address_detail')[0].value;
+            var temp_ph1=document.getElementsByName('phone1')[0].value;
+            var temp_ph2=document.getElementsByName('phone2')[0].value;
+            var temp_ph3=document.getElementsByName('phone3')[0].value;
+            var temp_email=document.getElementsByName('join_email')[0].value;
+            var com_id=document.getElementById('email_select');
+            var temp_com=com_id.options[com_id.selectedIndex].value;
+
+            
+
+            if(temp_id==''){
+                alert("아이디를 입력해 주세요.");
+                myform.join_id.focus();
+            }else if((temp_id.length<8) || (temp_id.length>15)){
+                alert("아이디는 8~15자로 입력해주세요.");
+                myform.join_id.focus();
+            }else{
+                sig_id=true;
+            }
+
+            if(sig_id==false){
+            }else if(temp_pwd==''){
+                alert("비밀번호를 입력해주세요.");
+                myform.join_password.focus();
+            }else if((temp_pwd.length<10) || (temp_pwd.length>20)){
+                alert("비밀번호는 10~20자로 입력해주세요.");
+                myform.join_password.focus();
+            }else{
+                sig_pwd=true;
+            }
+            
+            if(sig_pwd==false){
+            }else if(temp_name==''){
+                alert("이름을 입력해주세요.");
+                myform.join_name.focus();
+            }else{
+                sig_name=true;
+            }
+
+            if(sig_name==false){
+            }else if(temp_year==''){
+                alert("연도를 입력해주세요.");
+                myform.join_year.focus();
+            }else if(temp_year.length!=4){
+                alert("연도는 숫자 4자리입니다.");
+                myform.join_year.focus();
+            }else{
+                sig_year=true;
+            }
+            
+            if(sig_year==false){
+            }else if(temp_month=="월"){
+                alert("1월~12월 중 하나를 골라주세요.");
+            }else{
+                sig_month=true;
+            }
+            
+            if(sig_month==false){
+            }else if(temp_day==''){
+                alert("1일~31일 사이로 입력해주세요.");
+                myform.join_day.focus();
+            }else{
+                sig_day=true;
+            }
+            
+            if(sig_day==false){
+            }else if(temp_sex=="성별"){
+                alert("성별을 선택해 주세요.");
+            }else{
+                sig_sex=true;
+            }
+            
+            if(sig_sex==false){
+            }else if(temp_nick==''){
+                alert("닉네임을 입력해주세요.");
+                myform.nickname.focus();
+            }else{
+                sig_nick=true;
+            }
+
+            if(sig_nick==false){
+            }else if(temp_adr==''){
+                alert("주소를 입력해주세요.");
+                myform.address.focus();
+            }else if(temp_adr_de==''){
+                alert("상세주소를 입력해주세요.");
+                myform.address_detail.focus();
+            }else{
+                sig_add=true;
+            }
+
+            if(sig_add==false){
+            }else if(temp_ph1==''){
+                alert("전화번호를 입력해주세요.")
+                myform.phone1.focus();
+            }else if(temp_ph2==''){
+                alert("전화번호를 입력해주세요.")
+                myform.phone2.focus();
+            }else if(temp_ph3==''){
+                alert("전화번호를 입력해주세요.")
+                myform.phone3.focus();
+            }else{
+                sig_phone=true;
+            }
+            
+            if(sig_phone==false){
+            }else if(temp_email==''){
+                alert("email를 입력해주세요.")
+                myform.join_email.focus();
+            }else if(temp_com=="선택"){
+                alert("emailbox를 선택해주세요.")
+            }else{
+                sig_email=true;
+            }
+
+            if(sig_id==true && sig_pwd==true && sig_name==true && sig_year==true && sig_month==true &&
+            sig_day==true && sig_sex==true && sig_nick==true && sig_add==true && sig_phone==true &&sig_email==true){
+                sig=true;
+            }
+
+            var obj_length = document.getElementsByName("interest").length;
+            var inter_word="";
+
+            for (var i=0; i<obj_length; i++) {
+                if (document.getElementsByName("interest")[i].checked == true) {
+                    inter_word = inter_word + document.getElementsByName("interest")[i].value + "  ";
+                    
+                }
+            }
+
+            for (var i=0; i<2; i++) {
+                if(myform.smsok[i].checked==true){
+                    var sms_word = myform.smsok[i].value;
+                }
+            }
+
+            for (var i=0; i<2; i++) {
+                if(myform.emailok[i].checked==true){
+                    var email_word = myform.emailok[i].value;
+                }
+            }
+            
+            for (var i=0; i<2; i++) {
+                if(myform.openok[i].checked==true){
+                    var open_word = myform.openok[i].value;
+                }
+            }
+
+            var al_word = "회원가입이 완료되었습니다. \n 아이디: "+ temp_id + "\n 비밀번호: " + temp_pwd +
+                "\n 이름: " + temp_name + "\n 생년월일: " + temp_year + "년 " + temp_month + "월" + temp_day + "일" +
+                "\n 성별: " + temp_sex + "\n 닉네임: " + temp_nick + "\n 주소: " + temp_adr + " " + temp_adr_de +
+                "\n 연락처: " + temp_ph1 + "-" + temp_ph2 + "-" + temp_ph3 + "\n 이메일: " + temp_email + "@" + temp_com +
+                "\n 관심분야: " + inter_word + "\n 이벤트 수신 동의(SMS): " + sms_word +
+                "\n 이벤트 수신 동의(email): " + email_word + "\n 작품 열람 수집 동의: " + open_word;
+
+
+            if(sig){
+                alert(al_word);   
+                $("form").attr("action","join_suc.jsp").submit();
+            }
+        }
+        function pwd_check(){   //비밀번호 재확인 입력하면 위랑 비교해주는거 출력하게끔. 출력하는거 아직 안 만들었음.
+            var pwd = document.getElementsByName('join_password');
+            var pwd_check = document.getElementsByName('join_password_check');
+            var pwd_pack = document.querySelectorAll('input[type=password]');
+            pwd_pack[1].parentNode.parentNode.previousSibling.childNodes[1].innerText="";
+
+            if(pwd[0].value!=pwd_check[0].value){
+                document.getElementById("#pwdcheck").innerText="비밀번호가 일치하지 않습니다.";
+                
+            }else{
+                document.getElementById("#pwdcheck").innerText="비밀번호가 일치하지 않습니다.";
+            }
+        }
+        //중복 처리 과정
+        var id_checking = document.getElementsByName('join_id')[0].value;
+        $("#idcheck").keyup(function(){
+            $.ajax(
+                {
+                    url:"idcheck.somoa",
+                    type:"POST",
+                    cache:"false", 
+                    dataType:"json",
+                    data:$('#formjoin').serialize(),
+                    success :
+                    	function(result){
+                        	$('#idcheckresult').html(result.checkresult);
+                        	if(result.checkresult.equals("아이디가 존재합니다.")){
+                        		
+                        	}
+                    	},
+                    error: 
+                    	function(request,status,error){
+    						alert(request + "," + request.status + "," + error);
+                    	}
+                }
+            )
+        });
+        function gohome(){
+            location.href="index.jsp";
+        }
+    </script>
+</html>
